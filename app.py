@@ -30,7 +30,7 @@ def del_credential(password_locker):
     """
     Function to delete a contact
     """
-    password_locker.delete_contact()
+    password_locker.delete_account()
 
 ### We create a del_contact function that takes in a contact object and then calls the delete_contact() method on the contact object deleting it from the contact list####
 
@@ -138,44 +138,43 @@ def main():
                                         search_name)
                                     print(f"Account Name : {search_credential.account_name}")
                                     print('-' * 100)
-                                    print(
-                                        f"Account Name: {search_credential.account_name} PassWord :{search_credential.password}")
+                                    print(f"Account Name: {search_credential.account_name} PassWord :{search_credential.password}")
                             else:
                                     print("That Credential does not exist")
 
-#                     elif short_code == "del":
-#                          print("Enter the number of the contact you want to delete")
-#                          search_number = input()
-#                          if check_existing_contacts(search_number):
-#                              search_contact = find_contact(search_number)
-#                              print(
-#                                  f"{search_contact.first_name} {search_contact.last_name}")
-#                              print("_"*20)
-#                              contact.delete_contact()
-#                         #  if contact.delete_contact():
-#                              print('\n')
-#                              print(
-#                                  f'{f_name} {e_address} Successfully deleted!!')
-#                              print('\n')
+                    elif short_code == "del":
+                         print("Enter the number of the contact you want to delete")
+                         search_name = input().capitalize()
+                         if check_existing_credendtials(search_name):
+                             search_credential = find_credential(search_name)
+                             print(
+                                 f"{search_credential.account_name}")
+                             print("_"*20)
+                             password_locker.delete_account()
+                             print('\n')
+                             print(f"New Credential : {account_Name} UserName: {user_Name}  successfully deleted!!!")
+                             print('\n')
+                         else:
+                                    print("That Credential does not exist")
 
-#                     elif short_code == 'pwd':
-#                          print("Enter the number of the contact you want to delete")
-#                          search_number = input()
-#                          if check_existing_contacts(search_number):
-#                              search_contact = find_contact(search_number)
-#                              print(
-#                                  f"{search_contact.first_name} {search_contact.last_name}")
-#                              print("_"*20)
-#                              contact.generate_Password()
-#                     #  if contact.delete_contact():
-#                              print('\n')
-#                              print(
-#                                  f'{f_name} {e_address} password Successfully generated!!')
-#                              print('\n')
+                   elif short_code == "pwd":
+                         print("Enter the number of the contact you want to delete")
+                         search_name = input().capitalize()
+                         if check_existing_credendtials(search_name):
+                             search_credential = find_credential(search_name)
+                             print(
+                                 f"{search_contact.first_name} {search_contact.last_name}")
+                             print("_"*20)
+                             password_locker.delete_account()
+                        #  if contact.delete_contact():
+                             print('\n')
+                             print(
+                                 f'{f_name} {e_address} Successfully deleted!!')
+                             print('\n')
                              
-#                     elif short_code == "ex":
-#                                 print("Bye .......")
-#                                 break
+                    elif short_code == "ex":
+                                print("Happy Coding")
+                                break
                     else:
                             print(
                                 "I really didn't get that. Please use the short codes")
