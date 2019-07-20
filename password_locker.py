@@ -66,9 +66,9 @@ class Credentials:
 
 # ......................
     @classmethod
-    def copy_password(cls,password):
-        credential_found = Credentials.credential_exist(password)
-        pyperclip.copy(contact_found.password)
+    def copy_password(cls,account_name):
+        credential_found = Credentials.search_credential(account_name)
+        pyperclip.copy(credential_found.password)
  
     # @classmethod
     # def generate_Password():
