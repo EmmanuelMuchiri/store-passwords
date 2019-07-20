@@ -28,18 +28,18 @@ class Credentials:
         Credentials.credentials_list.remove(self)
              
     @classmethod
-    def find_by_number(cls, number):
+    def search_credential(cls, account_name):
         '''
-        Method that takes in a number and returns a contact that matches that number.
+        Method that takes in a account_name and returns a credential that matches that account_name.
         Args:
-            number: Phone number to search for
+            account_name: account_name to search for
         Returns :
-            Contact of person that matches the number.
+            Credential of account name that matches the account_name.
         '''
 
-        for contact in cls.contact_list:
-            if contact.phone_number == number:
-                return contact
+        for credential in cls.credentials_list:
+            if credential.account_name == account_name:
+                return credential
 
     @classmethod
     def contact_exist(cls, number):
