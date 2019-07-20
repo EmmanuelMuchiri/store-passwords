@@ -8,10 +8,10 @@ class Credentials:
 
     credentials_list = []  # Empty credentials list
 
-    def __init__(self,account_name,user_name, password):
-        self.account_name = account_name
-        self.user_name = user_name
-        self.password = password
+    # def __init__(self,account_name,user_name, password):
+    #     self.account_name = account_name
+    #     self.user_name = user_name
+    #     self.password = password
 
     def save_account(self):
         '''
