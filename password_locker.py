@@ -71,21 +71,17 @@ class Credentials:
         pyperclip.copy(credential_found.password)
  
     # @classmethod
-    # def generate_Password():
-    #     print('''
-    #     Password Generator
-    #     ==================
-    #     ''')
-
-    #     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
-
-    #     length = 9
-
-    #     print('\nhere are your passwords:')
-    #     password = ''
-    #     for c in range(0, length):
-    #             password += random.choice(chars)
-    #         print(password)
-    #         pass
-
-    #         generate_Password()
+    def generate_Password():
+        '''
+        Password Generator
+        ==================
+        '''
+        chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
+        length = 9
+        print('\nhere are your passwords:')
+        password = ''.join(random.choice(chars) for _ in range(length))
+        print(password)
+        # gen_pass=''.join(random.choice(char) for _ in range(size))
+            
+        return password
+    # generate_Password()
