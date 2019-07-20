@@ -1,13 +1,16 @@
 #!/usr/bin/env python3.6
-import pyperclip,random  # Importing the pyperclip module
+import pyperclip
+import random,string  # Importing the pyperclip module
 from password_locker import Credentials  # Importing the Credentials class
 ######Create functions to implement what the behaviours we have created####
 
-def create_credential(account_Name,user_Name,user_Password):
+
+def create_credential(account_Name, user_Name, user_Password):
     """
     Function to create a new contact
     """
-    new_credential = Credentials(account_Name,user_Name,user_Password)  # create contact object
+    new_credential = Credentials(
+        account_Name, user_Name, user_Password)  # create contact object
     return new_credential
 
 ###We create a function called create_contact(), that takes in four arguments###
@@ -66,26 +69,22 @@ def display_credentials():
     return Credentials.display_credentials()
 ## Copy Password ##
 # @classmethod
+
+
 def copy_password(account_Name):
     """
     A funct that copies the email using the pyperclip framework
     We import the framework then declare a function that copies the emails.
     """
     Credentials.copy_password(account_Name)
-    
+
+
 def generate_Password():
         '''
-        Password Generator
-        ==================
-        it generates a random 9-digit alphanumeric password with characters as well.
-        Example :EVK£mm6bP
+        generates a 9 digit randomn password
         '''
-        chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
-        length = 9
-        print('here is  are your password:')
-        password = ''.join(random.choice(chars) for _ in range(length))
-        print(password)            
-        return password
+        auto_Generic_Password=Credentials.generate_Password()
+        return auto_Generic_Password
 
 
 def main():
@@ -96,9 +95,9 @@ def main():
     print('\n')
     print("what would you like to do?")
     print('\n')
-   
+
     while True:
-                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, gp- Generate password, del- Delete credential,cp-Copy Password")
+                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, gp- Generate A randomn password, del- Delete credential,cp-Copy Password")
                     short_code = input().lower()
 
                     if short_code == 'cc':
@@ -110,11 +109,20 @@ def main():
 
                             print("Your Account name ...e.g LinkedIn username")
                             user_Name = input()
-	
-                            # print("Enter Password ...")
-                            user_Password = generate_Password()
-
-                            # create and save new contact.
+                            while True:
+                                print(" For Type/Paste Password type TP ; For generate_Password type gp")
+                                password_Choice = input("Enter").lower()
+                                if password_Choice == 'tp':
+                                    user_Password = input("Enter Password")
+                                    break
+                                elif password_Choice == 'gp':
+                                    user_Password = generate_Password()
+                                    break
+                                elif password_Choice != 'tp' or 'gp':
+                                    print("Invalid password please try again")
+                                    break
+                                else:
+                                    print("Invalid password please try again")
                             save_credentials(create_credential(account_Name,user_Name,user_Password))
                             print('\n')
                             print(f"New Credential : {account_Name} UserName: {user_Name}  created")
@@ -148,21 +156,7 @@ def main():
                             else:
                                     print("That Credential does not exist")
                                     print('\n')
-
-                    elif short_code == 'gp':
-
-                        	print("Enter the number of the contact you want to generate password for")
-                        	search_name = input().capitalize()
-                        	if check_existing_credendtials(search_name):
-                            		search_credential = find_credential(search_name)
-                            		print(f"{search_credential.account_name}")
-                            		print("_"*20)
-                            		user_Password=generate_Password()
-                            		print('\n')
-                            		print(f"New Credential : {account_Name} UserName: {user_Name}  successfully generated.")
-                            # save_credentials(create_credentialaccount_Name,account_Name,user_Password
-                            # else:
-							# 		print("That Credential does not exist")
+					
                     elif short_code == 'cp':
 
                         	print("Enter the number of the contact you want to generate password for")
@@ -189,13 +183,12 @@ def main():
                              print('\n')
                          else:
                                     print("That Credential does not exist")
-                             
-                    elif short_code == "ex":
-                                print("Happy Coding")
-                                break
+                                     
+                    elif short_code == 'gp':
+                    		user_Password = generate_Password()
                     else:
-                            print(
-                                "I really didn't get that. Please use the short codes")
+                            print("Invalid Response Kindly use use the short codes provided in the menu")
+                            break
 
 
 if __name__ == '__main__':
