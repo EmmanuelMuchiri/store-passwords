@@ -76,6 +76,7 @@ class Credentials:
         Password Generator
         ==================
         it generates a random 9-digit alphanumeric password with characters as well.
+        Example :EVK£mm6bP
         '''
         chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
         length = 9

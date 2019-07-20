@@ -1,5 +1,5 @@
 import unittest  # Importing the unittest module
-import pyperclip # Importing the pyperclip module
+import pyperclip  # Importing the pyperclip module
 from password_locker import Credentials  # Importing the Credentials class
 
 
@@ -17,12 +17,12 @@ class TestCredential(unittest.TestCase):
         Set up method to run before each test cases.
         '''
         self.new_credential = Credentials(
-            "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # create contact object
+            "Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # create contact object
 
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "Linkedin")
         self.assertEqual(self.new_credential.user_name, "EmmanuelMuchiri")
-        self.assertEqual(self.new_credential.password, "Emmanuel@7127")
+        self.assertEqual(self.new_credential.password, "EVK£mm6bP")
 
     def save_account(self):
         '''
@@ -44,7 +44,8 @@ class TestCredential(unittest.TestCase):
             objects to our Credentials_list
             '''
             self.new_credential.save_account()
-            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials(
+                "Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # new credential
             test_credential.save_account()
             self.assertEqual(len(Credentials.credentials_list), 2)
 
@@ -53,7 +54,8 @@ class TestCredential(unittest.TestCase):
             test_delete_account to test if we can remove a credential from our Credentials list
             '''
             self.new_credential.save_account()
-            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials(
+                "Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # new credential
             test_credential.save_account()
             self.new_credential.delete_account()  # Deleting a credential object
             self.assertEqual(len(Credentials.credentials_list), 1)
@@ -64,19 +66,22 @@ class TestCredential(unittest.TestCase):
             '''
 
             self.new_credential.save_account()
-            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials(
+                "Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # new credential
             test_credential.save_account()
 
             found_credential = Credentials.search_credential("Linkedin")
 
-            self.assertEqual(found_credential.account_name,test_credential.account_name)
+            self.assertEqual(found_credential.account_name,
+                             test_credential.account_name)
 
     def test_credential_exist(self):
             '''
             test to check if we can return a Boolean  if we cannot find the credential.
             '''
             self.new_credential.save_account()
-            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials(
+                "Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # new credential
             test_credential.save_account()
 
             credential_exists = Credentials.credential_exist("Linkedin")
@@ -88,7 +93,8 @@ class TestCredential(unittest.TestCase):
         Test to confrim that we can actually display credential(s) from credentials_list
         that the user has and all the information.i.e account name username(S) and password(s)
         '''
-        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+        self.assertEqual(Credentials.display_credentials(),
+                         Credentials.credentials_list)
 
     def test_copy_password(self):
         '''
@@ -98,19 +104,15 @@ class TestCredential(unittest.TestCase):
         self.new_credential.save_account()
         Credentials.copy_password("Linkedin")
         self.assertEqual(self.new_credential.password, pyperclip.paste())
-
-    # def test_generate_Password(self):
-    #     self.new_credential.save_contact()
-    #     test_contact = Contact(
-    #         "Test", "user", "0712345678", "test@user.com")  # new contact
-    #     test_contact.save_contact()
-
-    #     self.new_credential.generate_Password()  # Deleting a contact object
-    #     self.assertEqual(len(Contact.contact_list), 1)
-
+        
+    def test_generate_Password(self):
+        '''
+        Test to confirm that we can copy the password from a found credential
+        so that we can paste it upon login into the respective account.
+        '''
+        self.new_credential.save_account()
+        Credentials.copy_password("Linkedin")
+        self.assertEqual(self.new_credential.password, pyperclip.paste())
+               
 if __name__ == '__main__':
-
-    unittest.main()
-
-
     unittest.main()
