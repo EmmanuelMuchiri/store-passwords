@@ -42,26 +42,26 @@ class Credentials:
                 return credential
 
     @classmethod
-    def contact_exist(cls, number):
+    def credential_exist(cls, account_name):
         '''
-        Method that checks if a contact exists from the contact list.
+        Method that checks if a credential exists from the credential list.
         Args:
-            number: Phone number to search if it exists
+            number: account_name to search if it exists
         Returns :
-            Boolean: True or false depending if the contact exists
+            Boolean: True or false depending if the credential exists
         '''
-        for contact in cls.contact_list:
-            if contact.phone_number == number:
-                    return True
+        for credential in cls.credentials_list:
+            if credential.account_name == account_name:
+                return True
 
         return False
 
     @classmethod
-    def display_contacts(cls):
+    def display_credential(cls):
         '''
         method that returns the contact list
         '''
-        return cls.contact_list
+        return cls.credentials_list
 
 
 # ......................
