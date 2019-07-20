@@ -92,16 +92,7 @@ def main():
     print('\n')
    
     while True:
-                    print('''
-                          Use these short codes : 
-                          cc - Create a new credential,
-                          dc - Display Credential(s), 
-                          fc - Find a credential, 
-                          ex - Exit the application,
-                          del- Delete credential, 
-                          pwd- Generate password
-                          ''')
-
+                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, del- Delete credential, pwd- Generate password")
                     short_code = input().lower()
 
                     if short_code == 'cc':
@@ -138,24 +129,19 @@ def main():
                                         "Oops !!! You dont seem to have any Credentials saved yet")
                                     print('\n')
 
-#                     elif short_code == 'fc':
+                    elif short_code == 'fc':
 
-#                             print("Enter the number you want to search for")
-
-#                             search_number = input()
-#                             if check_existing_contacts(search_number):
-#                                     search_contact = find_contact(
-#                                         search_number)
-#                                     print(
-#                                         f"{search_contact.first_name} {search_contact.last_name}")
-#                                     print('-' * 20)
-
-#                                     print(
-#                                         f"Phone number.......{search_contact.phone_number}")
-#                                     print(
-#                                         f"Email address.......{search_contact.email}")
-#                             else:
-#                                     print("That contact does not exist")
+                            print("Enter the Account Name you want to search for")
+                            search_name = input().capitalize()
+                            if check_existing_credendtials(search_name):
+                                    search_credential = find_credential(
+                                        search_name)
+                                    print(f"Account Name : {search_credential.account_name}")
+                                    print('-' * 100)
+                                    print(
+                                        f"Account Name: {search_credential.account_name} PassWord :{search_credential.password}")
+                            else:
+                                    print("That Credential does not exist")
 
 #                     elif short_code == "del":
 #                          print("Enter the number of the contact you want to delete")
