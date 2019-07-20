@@ -85,3 +85,20 @@ class Credentials:
         print(password)
         return password
     # generate_Password()
+
+
+class Users:
+    
+    users_list=[]
+    
+    def __init__(self,user_name, password):
+        self.user_name = user_name
+        self.password = password
+        
+    def save_account(self):
+        '''
+        save_account method saves accounts credentials credentials_list
+        '''
+        Users.users_list.append(self)
+    
+    
