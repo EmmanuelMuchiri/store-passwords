@@ -1,5 +1,22 @@
 import pyperclip,random,string
 
+class Users:
+    
+    users_list=[] # created an empty users list where users will be appended
+    
+    def __init__(self,u_Name, pswd):
+        '''
+        Created an instance of a user 
+        '''
+        self.u_Name = u_Name
+        self.pswd = pswd
+        
+    def save_user(self):
+        '''
+        save_user method saves users in our class Users inside the users_list
+        '''
+        Users.users_list.append(self)
+
 class Credentials:
 
     """
@@ -86,19 +103,5 @@ class Credentials:
         return password
     # generate_Password()
 
-
-class Users:
-    
-    users_list=[]
-    
-    def __init__(self,user_name, password):
-        self.user_name = user_name
-        self.password = password
-        
-    def save_account(self):
-        '''
-        save_account method saves accounts credentials credentials_list
-        '''
-        Users.users_list.append(self)
     
     
