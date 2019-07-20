@@ -49,17 +49,16 @@ class TestCredential(unittest.TestCase):
             test_credential.save_account()
             self.assertEqual(len(Credentials.credentials_list), 2)
 
-    # def test_delete_contact(self):
-    #         '''
-    #         test_delete_contact to test if we can remove a contact from our contact list
-    #         '''
-    #         self.new_credential.save_contact()
-    #         test_contact = Contact(
-    #             "Test", "user", "0712345678", "test@user.com")  # new contact
-    #         test_contact.save_contact()
-
-    #         self.new_credential.delete_contact()  # Deleting a contact object
-    #         self.assertEqual(len(Contact.contact_list), 1)
+    def test_delete_account(self):
+            '''
+            test_delete_contact to test if we can remove a contact from our contact list
+            '''
+            self.new_credential.save_account()
+            test_credential = Credentials(
+            "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential.save_account()
+            self.new_credential.delete_account()  # Deleting a contact object
+            self.assertEqual(len(Credentials.credentials_list), 1)
 
 #     def test_find_contact_by_number(self):
 #         '''
