@@ -123,22 +123,20 @@ def main():
                             print(f"New Credential : {account_Name} UserName: {user_Name}  created")
                             print('\n')
 
-#                     elif short_code == 'dc':
+                    elif short_code == 'dc':
 
-#                             if display_contacts():
-#                                     print("Here is a list of all your contacts")
-#                                     print('\n')
+                            if display_credentials():
+                                    print("Your Account(s) Credential(S) are as follows :")
+                                    print('\n')
+                                    for password_locker in display_credentials():
+                                            print(f"Account Name :{password_locker.account_name} ; UserName: {password_locker.user_name} ; PassWord :{password_locker.password}")
 
-#                                     for contact in display_contacts():
-#                                             print(
-#                                                 f"{contact.first_name} {contact.last_name} {e_address} {contact.phone_number}")
-
-#                                     print('\n')
-#                             else:
-#                                     print('\n')
-#                                     print(
-#                                         "You dont seem to have any contacts saved yet")
-#                                     print('\n')
+                                    print('\n')
+                            else:
+                                    print('\n')
+                                    print(
+                                        "Oops !!! You dont seem to have any Credentials saved yet")
+                                    print('\n')
 
 #                     elif short_code == 'fc':
 
@@ -192,9 +190,9 @@ def main():
 #                     elif short_code == "ex":
 #                                 print("Bye .......")
 #                                 break
-#                     else:
-#                             print(
-#                                 "I really didn't get that. Please use the short codes")
+                    else:
+                            print(
+                                "I really didn't get that. Please use the short codes")
 
 
 if __name__ == '__main__':
