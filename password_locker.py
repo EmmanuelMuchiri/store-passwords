@@ -25,15 +25,8 @@ class Credentials:
         delete_account method deletes a saved account from the credentials_list
         '''
 
-        Contact.contact_list.remove(self)
-    
-    # def delete_contacts():
-    #     '''
-    #     delete_contact method deletes a saved contact from the contact_list
-    #     '''
-
-    #     Contact.contact_list.remove()
-        
+        Credentials.credentials_list.remove(self)
+             
     @classmethod
     def find_by_number(cls, number):
         '''
