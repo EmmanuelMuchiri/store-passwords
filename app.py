@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.6
-import pyperclip  # Importing the pyperclip module
+import pyperclip,random  # Importing the pyperclip module
 from password_locker import Credentials  # Importing the Credentials class
 ######Create functions to implement what the behaviours we have created####
 
@@ -74,12 +74,20 @@ def copy_password(cls, account_Name):
     credential_found = Credentials.search_credential(account_Name)
     pyperclip.copy(credential_found.user_Password)
     
-# @classmethod
-def gen_password(password_locker):
-    """
-    Function to delete a contact
-    """
-    Credentials.generate_Password()
+    
+def generate_Password():
+        '''
+        Password Generator
+        ==================
+        it generates a random 9-digit alphanumeric password with characters as well.
+        Example :EVK£mm6bP
+        '''
+        chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
+        length = 9
+        print('here is  are your password:')
+        password = ''.join(random.choice(chars) for _ in range(length))
+        print(password)            
+        return password
 
 
 def main():
@@ -92,7 +100,7 @@ def main():
     print('\n')
    
     while True:
-                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, del- Delete credential, pwd- Generate password")
+                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, del- Delete credential, gp- Generate password")
                     short_code = input().lower()
 
                     if short_code == 'cc':
@@ -141,7 +149,23 @@ def main():
                                     print(f"Account Name: {search_credential.account_name} PassWord :{search_credential.password}")
                             else:
                                     print("That Credential does not exist")
+                                    print('\n')
 
+                    elif short_code == 'gp':
+
+                        	print("Enter the number of the contact you want to generate password for")
+                        	search_name = input().capitalize()
+                        	if check_existing_credendtials(search_name):
+                            		search_credential = find_credential(search_name)
+                            		print(f"{search_credential.account_name}")
+                            		print("_"*20)
+                            		user_Password=generate_Password()
+                            		print('\n')
+                            		print(f"New Credential : {account_Name} UserName: {user_Name}  successfully deleted!!!")
+                              
+                            # else:
+							# 		print("That Credential does not exist")
+                                    
                     elif short_code == "del":
                          print("Enter the number of the contact you want to delete")
                          search_name = input().capitalize()
@@ -156,21 +180,6 @@ def main():
                              print('\n')
                          else:
                                     print("That Credential does not exist")
-
-                   elif short_code == "pwd":
-                         print("Enter the number of the contact you want to delete")
-                         search_name = input().capitalize()
-                         if check_existing_credendtials(search_name):
-                             search_credential = find_credential(search_name)
-                             print(
-                                 f"{search_contact.first_name} {search_contact.last_name}")
-                             print("_"*20)
-                             password_locker.delete_account()
-                        #  if contact.delete_contact():
-                             print('\n')
-                             print(
-                                 f'{f_name} {e_address} Successfully deleted!!')
-                             print('\n')
                              
                     elif short_code == "ex":
                                 print("Happy Coding")

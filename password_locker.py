@@ -82,6 +82,6 @@ class Credentials:
         length = 9
         print('here is  are your password:')
         password = ''.join(random.choice(chars) for _ in range(length))
-        print(password)            
+        # print(password)            
         return password
-    generate_Password()
+    # generate_Password()
