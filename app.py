@@ -65,15 +65,13 @@ def display_credentials():
     """
     return Credentials.display_credentials()
 ## Copy Password ##
-@classmethod
-def copy_password(cls, account_Name):
+# @classmethod
+def copy_password(account_Name):
     """
     A funct that copies the email using the pyperclip framework
     We import the framework then declare a function that copies the emails.
     """
-    credential_found = Credentials.search_credential(account_Name)
-    pyperclip.copy(credential_found.user_Password)
-    
+    Credentials.copy_password(account_Name)
     
 def generate_Password():
         '''
@@ -100,7 +98,7 @@ def main():
     print('\n')
    
     while True:
-                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, del- Delete credential, gp- Generate password")
+                    print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, gp- Generate password, del- Delete credential,cp-Copy Password")
                     short_code = input().lower()
 
                     if short_code == 'cc':
@@ -112,9 +110,9 @@ def main():
 
                             print("Your Account name ...e.g LinkedIn username")
                             user_Name = input()
-
-                            print("Enter Password ...")
-                            user_Password = input()
+	
+                            # print("Enter Password ...")
+                            user_Password = generate_Password()
 
                             # create and save new contact.
                             save_credentials(create_credential(account_Name,user_Name,user_Password))
@@ -161,11 +159,22 @@ def main():
                             		print("_"*20)
                             		user_Password=generate_Password()
                             		print('\n')
-                            		print(f"New Credential : {account_Name} UserName: {user_Name}  successfully deleted!!!")
-                              
+                            		print(f"New Credential : {account_Name} UserName: {user_Name}  successfully generated.")
+                            # save_credentials(create_credentialaccount_Name,account_Name,user_Password
                             # else:
 							# 		print("That Credential does not exist")
-                                    
+                    elif short_code == 'cp':
+
+                        	print("Enter the number of the contact you want to generate password for")
+                        	search_name = input().capitalize()
+                        	if check_existing_credendtials(search_name):
+                            		search_credential = find_credential(search_name)
+                            		print(f"{search_credential.account_name}")
+                            		print("_"*20)
+                            		user_Password=copy_password(search_name)
+                            		print('\n')
+                            		print(f"New Credential : {account_Name} UserName: {user_Name}  You can proceed and paste to your account")
+                                             
                     elif short_code == "del":
                          print("Enter the number of the contact you want to delete")
                          search_name = input().capitalize()
@@ -192,3 +201,5 @@ def main():
 if __name__ == '__main__':
 
     main()
+
+
