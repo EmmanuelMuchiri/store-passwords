@@ -40,39 +40,38 @@ class TestCredential(unittest.TestCase):
 
     def test_save_multiple_accounts(self):
             '''
-            test_save_multiple_accounts to check if we can save multiple contact
+            test_save_multiple_accounts to check if we can save multiple credential
             objects to our Credentials_list
             '''
             self.new_credential.save_account()
-            test_credential = Credentials(
-            "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
             test_credential.save_account()
             self.assertEqual(len(Credentials.credentials_list), 2)
 
     def test_delete_account(self):
             '''
-            test_delete_contact to test if we can remove a contact from our contact list
+            test_delete_account to test if we can remove a credential from our Credentials list
             '''
             self.new_credential.save_account()
-            test_credential = Credentials(
-            "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
             test_credential.save_account()
-            self.new_credential.delete_account()  # Deleting a contact object
+            self.new_credential.delete_account()  # Deleting a credential object
             self.assertEqual(len(Credentials.credentials_list), 1)
 
-#     def test_find_contact_by_number(self):
-#         '''
-#         test to check if we can find a contact by phone number and display information
-#         '''
+    def test_search_credential(self):
+            '''
+            test to check if we can find a credential by account_name and display credentials information
+            '''
 
-#         self.new_credential.save_contact()
-#         test_contact = Contact("Test", "user", "0711223344",
-#                                "test@user.com")  # new contact
-#         test_contact.save_contact()
+            self.new_credential.save_account()
+            test_credential = Credentials(
+                "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential.save_account()
 
-#         found_contact = Contact.find_by_number("0711223344")
+            found_credential = Credentials.search_credential("Linkedin")
 
-#         self.assertEqual(found_contact.email, test_contact.email)
+            self.assertEqual(found_credential.account_name,
+                            test_credential.account_name)
 
 #     def test_contact_exists(self):
 #         '''
