@@ -75,13 +75,12 @@ class Credentials:
         '''
         Password Generator
         ==================
+        it generates a random 9-digit alphanumeric password with characters as well.
         '''
         chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
         length = 9
-        print('\nhere are your passwords:')
+        print('here is  are your password:')
         password = ''.join(random.choice(chars) for _ in range(length))
-        print(password)
-        # gen_pass=''.join(random.choice(char) for _ in range(size))
-            
+        print(password)            
         return password
-    # generate_Password()
+    generate_Password()
