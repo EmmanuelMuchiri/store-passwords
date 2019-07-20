@@ -19,7 +19,7 @@ def save_credentials(password_locker):
     """
     Function to save contact
     """
-    password_locker.save_contact()
+    password_locker.save_account()
 
 ### we create save contact function that takes in a contact object and then calls the save_contact method to save the contact. ####
 
@@ -75,48 +75,53 @@ def copy_password(cls, account_Name):
     pyperclip.copy(credential_found.user_Password)
     
 # @classmethod
-def gen_password(contact):
+def gen_password(password_locker):
     """
     Function to delete a contact
     """
     Credentials.generate_Password()
 
 
-# def main():
-#     print("Hello Welcome to your contact list. What is your name?")
-#     user_name = input()
+def main():
+    print("Hello Welcome to your contact list. What is your name?")
+    user_name = input()
 
-#     print(f"Hello {user_name}. what would you like to do?")
-#     print('\n')
+    print(f"Hello {user_name}.Welcome To PassWord Locker Manager")
+    print('\n')
+    print("what would you like to do?")
+    print('\n')
+   
+    while True:
+                    print('''
+                          Use these short codes : 
+                          cc - Create a new credential,
+                          dc - Display Credential(s), 
+                          fc - Find a credential, 
+                          ex - Exit the application,
+                          del- Delete credential, 
+                          pwd- Generate password
+                          ''')
 
-#     while True:
-#                     print(
-#                         "Use these short codes : cc - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list , del -delete contact, pwd -generate password")
+                    short_code = input().lower()
 
-#                     short_code = input().lower()
+                    if short_code == 'cc':
+                            print("New Credential")
+                            print("-"*10)
 
-#                     if short_code == 'cc':
-#                             print("New Contact")
-#                             print("-"*10)
+                            print("Account name ....")
+                            account_Name = input().capitalize()
 
-#                             print("First name ....")
-#                             f_name = input()
+                            print("Your Account name ...e.g LinkedIn username")
+                            user_Name = input()
 
-#                             print("Last name ...")
-#                             l_name = input()
+                            print("Enter Password ...")
+                            user_Password = input()
 
-#                             print("Phone number ...")
-#                             p_number = input()
-
-#                             print("Email address ...")
-#                             e_address = input()
-
-#                             # create and save new contact.
-#                             save_contacts(create_contact(
-#                                 f_name, l_name, p_number, e_address))
-#                             print('\n')
-#                             print(f"New Contact {f_name} {l_name}  created")
-#                             print('\n')
+                            # create and save new contact.
+                            save_credentials(create_credential(account_Name,user_Name,user_Password))
+                            print('\n')
+                            print(f"New Credential : {account_Name} UserName: {user_Name}  created")
+                            print('\n')
 
 #                     elif short_code == 'dc':
 
@@ -192,6 +197,6 @@ def gen_password(contact):
 #                                 "I really didn't get that. Please use the short codes")
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     main()
+    main()
