@@ -57,7 +57,7 @@ class Credentials:
         return False
 
     @classmethod
-    def display_credential(cls):
+    def display_credentials(cls):
         '''
         method that returns the contact list
         '''
@@ -66,33 +66,26 @@ class Credentials:
 
 # ......................
     @classmethod
-    def copy_email(cls,number):
-        contact_found = Contact.find_by_number(number)
-        pyperclip.copy(contact_found.email)
+    def copy_password(cls,password):
+        credential_found = Credentials.credential_exist(password)
+        pyperclip.copy(contact_found.password)
  
-    @classmethod
-    def delete_contacts(cls):
-        
-        '''
-        method that returns the contact list
-        '''
-        return cls.contact_list
     # @classmethod
-    def generate_Password():
-        print('''
-        Password Generator
-        ==================
-        ''')
+    # def generate_Password():
+    #     print('''
+    #     Password Generator
+    #     ==================
+    #     ''')
 
-        chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
+    #     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
 
-        length = 9
+    #     length = 9
 
-        print('\nhere are your passwords:')
-        password = ''
-        for c in range(0, length):
-                password += random.choice(chars)
-            print(password)
-            pass
+    #     print('\nhere are your passwords:')
+    #     password = ''
+    #     for c in range(0, length):
+    #             password += random.choice(chars)
+    #         print(password)
+    #         pass
 
-            generate_Password()
+    #         generate_Password()
