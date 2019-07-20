@@ -1,8 +1,15 @@
 #!/usr/bin/env python3.6
 import pyperclip
 import random,string  # Importing the pyperclip module
-from password_locker import Credentials  # Importing the Credentials class
+from password_locker import Users,Credentials  # Importing the Credentials class
 ######Create functions to implement what the behaviours we have created####
+def create_user(user_name,password):
+    '''
+    Function to add a new user to our users_list
+    '''
+    new_User=Users(user_name,password)
+    
+    return new_User
 
 
 def create_credential(account_Name, user_Name, user_Password):
