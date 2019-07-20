@@ -64,28 +64,24 @@ class TestCredential(unittest.TestCase):
             '''
 
             self.new_credential.save_account()
-            test_credential = Credentials(
-                "Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
             test_credential.save_account()
 
             found_credential = Credentials.search_credential("Linkedin")
 
-            self.assertEqual(found_credential.account_name,
-                            test_credential.account_name)
+            self.assertEqual(found_credential.account_name,test_credential.account_name)
 
-#     def test_contact_exists(self):
-#         '''
-#         test to check if we can return a Boolean  if we cannot find the contact.
-#         '''
+    def test_credential_exist(self):
+            '''
+            test to check if we can return a Boolean  if we cannot find the credential.
+            '''
+            self.new_credential.save_account()
+            test_credential = Credentials("Linkedin", "EmmanuelMuchiri", "Emmanuel@7127")  # new credential
+            test_credential.save_account()
 
-#         self.new_credential.save_contact()
-#         test_contact = Contact("Test", "user", "0711223344",
-#                                "test@user.com")  # new contact
-#         test_contact.save_contact()
+            credential_exists = Credentials.credential_exist("Linkedin")
 
-#         contact_exists = Contact.contact_exist("0711223344")
-
-#         self.assertTrue(contact_exists)
+            self.assertTrue(credential_exists)
 
 #     def test_display_all_accounts(self):
 #         self.assertEqual(Contact.display_contacts(), Contact.contact_list)
