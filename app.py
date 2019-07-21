@@ -36,7 +36,7 @@ def create_credential(account_Name, user_Name, user_Password):
 
 ###We create a function called create_contact(), that takes in four arguments###
 
-#####Save Contacts #####
+#####Save Credentials #####
 
 
 def save_credentials(password_locker):
@@ -63,29 +63,29 @@ def del_credential(password_locker):
 
 def find_credential(account_Name):
     """
-    Function that finds a Credentials by number and returns the Credentials
+    Function that finds a Credentials by account name and returns the Credentials
     """
     return Credentials.search_credential(account_Name)
 
-### We create a func that takes in a number and calls the Credentials class method find_by_number that returns the Credentials. ###
+### We create a function that takes in a account name and calls the Credentials class method search credentials that returns the Credentials. ###
 
 ### Check if a Credentials exists ###
 
 
 def check_existing_credendtials(account_Name):
     """
-    Function that check if a Credentials exists with that number and return a Boolean
+    Function that check if a Credentials exists with that account name and return a Boolean
     """
     return Credentials.credential_exist(account_Name)
 
-### The function check_existing_contacts takes in a number as an argument and calls the class method contact_exist which returns a boolean.###
+### The function check_existing_contacts takes in a account name as an argument and calls the class method credentials_exist which returns a boolean.###
 
-## Displaying all contacts ##
+## Displaying all Credentials ##
 
 
 def display_credentials():
     """
-    Func that rteturns all the saved contacts
+    Func that rteturns all the saved Credentials
     """
     return Credentials.display_credentials()
 ## Copy Password ##
@@ -94,7 +94,7 @@ def display_credentials():
 
 def copy_password(account_Name):
     """
-    A funct that copies the email using the pyperclip framework
+    A funct that copies the password using the pyperclip framework
     We import the framework then declare a function that copies the emails.
     """
     Credentials.copy_password(account_Name)
@@ -199,7 +199,7 @@ def main():
 					
                     elif short_code == 'cp':
 
-                        	print("Enter the number of the Credentials you want to generate password for")
+                        	print("Enter the account name of the Credentials you want to generate password for")
                         	search_name = input().capitalize()
                         	if check_existing_credendtials(search_name):
                             		search_credential = find_credential(search_name)
@@ -210,7 +210,7 @@ def main():
                             		print(f"New Credential : {account_Name} UserName: {user_Name}  You can proceed and paste to your account")
                                              
                     elif short_code == "del":
-                         print("Enter the number of the Credentials you want to delete")
+                         print("Enter the account name of the Credentials you want to delete")
                          search_name = input().capitalize()
                          if check_existing_credendtials(search_name):
                              search_credential = find_credential(search_name)
