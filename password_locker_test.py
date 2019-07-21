@@ -36,7 +36,7 @@ class TestCredential(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_credential = Credentials("Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # create contact object
+        self.new_credential = Credentials("Linkedin", "EmmanuelMuchiri", "EVK£mm6bP")  # create Credentials object
 
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "Linkedin")

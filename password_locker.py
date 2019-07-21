@@ -86,7 +86,7 @@ class Credentials:
     @classmethod
     def display_credentials(cls):
         '''
-        method that returns the contact list
+        method that returns the Credentials list
         '''
         return cls.credentials_list
 

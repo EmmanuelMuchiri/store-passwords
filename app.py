@@ -28,10 +28,10 @@ def authenticate_User(us_name,pwd):
 
 def create_credential(account_Name, user_Name, user_Password):
     """
-    Function to create a new contact
+    Function to create a new Credentials
     """
     new_credential = Credentials(
-        account_Name, user_Name, user_Password)  # create contact object
+        account_Name, user_Name, user_Password)  # create Credentials object
     return new_credential
 
 ###We create a function called create_contact(), that takes in four arguments###
@@ -41,40 +41,40 @@ def create_credential(account_Name, user_Name, user_Password):
 
 def save_credentials(password_locker):
     """
-    Function to save contact
+    Function to save Credentials
     """
     password_locker.save_account()
 
-### we create save contact function that takes in a contact object and then calls the save_contact method to save the contact. ####
+### we create save Credentials function that takes in a Credentials object and then calls the save_contact method to save the Credentials. ####
 
-#####Delete Contact
+#####Delete Credentials
 
 
 def del_credential(password_locker):
     """
-    Function to delete a contact
+    Function to delete a Credentials
     """
     password_locker.delete_account()
 
-### We create a del_contact function that takes in a contact object and then calls the delete_contact() method on the contact object deleting it from the contact list####
+### We create a del_contact function that takes in a Credentials object and then calls the delete_contact() method on the Credentials object deleting it from the Credentials list####
 
-##Fininding a contact ##
+##Fininding a Credentials ##
 
 
 def find_credential(account_Name):
     """
-    Function that finds a contact by number and returns the contact
+    Function that finds a Credentials by number and returns the Credentials
     """
     return Credentials.search_credential(account_Name)
 
-### We create a func that takes in a number and calls the Contact class method find_by_number that returns the contact. ###
+### We create a func that takes in a number and calls the Credentials class method find_by_number that returns the Credentials. ###
 
-### Check if a contact exists ###
+### Check if a Credentials exists ###
 
 
 def check_existing_credendtials(account_Name):
     """
-    Function that check if a contact exists with that number and return a Boolean
+    Function that check if a Credentials exists with that number and return a Boolean
     """
     return Credentials.credential_exist(account_Name)
 
@@ -199,7 +199,7 @@ def main():
 					
                     elif short_code == 'cp':
 
-                        	print("Enter the number of the contact you want to generate password for")
+                        	print("Enter the number of the Credentials you want to generate password for")
                         	search_name = input().capitalize()
                         	if check_existing_credendtials(search_name):
                             		search_credential = find_credential(search_name)
@@ -210,7 +210,7 @@ def main():
                             		print(f"New Credential : {account_Name} UserName: {user_Name}  You can proceed and paste to your account")
                                              
                     elif short_code == "del":
-                         print("Enter the number of the contact you want to delete")
+                         print("Enter the number of the Credentials you want to delete")
                          search_name = input().capitalize()
                          if check_existing_credendtials(search_name):
                              search_credential = find_credential(search_name)
