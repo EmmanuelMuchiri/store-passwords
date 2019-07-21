@@ -24,6 +24,16 @@ class Credentials:
     """
 
     credentials_list = []  # Empty credentials list
+    @classmethod
+    def confirm_User(cls,u_Name, pswd):
+        '''Created a gunction to confirm 
+        whether the active user is in our users list or not
+        '''
+        active_user = ''
+        for user in Users.users_list:
+            if(user.u_Name == u_Name and user.pswd == pswd):
+                    active_user == user.u_Name
+        return active_user
 
     def __init__(self,account_name,user_name, password):
         self.account_name = account_name
@@ -98,7 +108,7 @@ class Credentials:
         chars = char=string.ascii_uppercase+string.ascii_lowercase+string.digits
         length = 9
         print('here is  are your password:')
-        password = ''.join(random.choice(chars) for _ in range(length))
+        password = ''.join(random.choice(chars) for _ in range(-1,length))
         print(password)
         return password
     # generate_Password()

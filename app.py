@@ -11,6 +11,20 @@ def create_user(user_name,password):
     
     return new_User
 
+def save_New_User(user_name):
+    '''
+    This function updates our users_list with a new user
+    '''
+    Users.users_list.append(user_name)
+    
+def authenticate_User(us_name,pwd):
+    '''
+    This function authenticates the current user
+    in our application
+    '''
+    authentic_user=Credentials.confirm_User(us_name,pwd)
+    
+    return authentic_user
 
 def create_credential(account_Name, user_Name, user_Password):
     """
@@ -95,13 +109,32 @@ def generate_Password():
 
 
 def main():
-    print("Hello Welcome to your contact list. What is your name?")
-    user_name = input()
+    print("Hello Welcome to your Credentials list.Create An Account : CA or Already Have An Account LI? :")
+    short_code=input("CA , LI").lower()
+    # if short_code == 'ca':
+    #     print("Invalid choice")
+    #     pass
+    if short_code == 'ca':
+        uName=input("Enter Your prefered username").capitalize()
+        pswd = input("Enter Your Password As Well")
+        save_New_User(create_user(uName,pswd))
+        
+        
+        # print(f"Your Account Has been created successfully UserName :{user_name};Password : {password}")
+        
+    elif short_code == 'li' :   
+        
+        user_name=input("Enter UserName").capitalize()
+        password=input("Paste Password")
+        validate_user=(authenticate_User(user_name,password))
+        
+        if validate_user == user_name:
+            print(f"Hello {user_name}.Welcome To PassWord Locker Manager")  
+            print('\n')
+            print("what would you like to do?")
+            print('\n')
+            
 
-    print(f"Hello {user_name}.Welcome To PassWord Locker Manager")
-    print('\n')
-    print("what would you like to do?")
-    print('\n')
 
     while True:
                     print("Use these short codes : cc - Create a new credential, dc - Display Credential(s), fc - Find a credential,ex - Exit the application, gp- Generate A randomn password, del- Delete credential,cp-Copy Password")
@@ -193,10 +226,13 @@ def main():
                                      
                     elif short_code == 'gp':
                     		user_Password = generate_Password()
+                  
+              	
+                    elif short_code == 'ex':
+                        print("Happy Coding See You Dear")
+                        break
                     else:
-                            print("Invalid Response Kindly use use the short codes provided in the menu")
-                            break
-
+                        print("Invalid response kindly refer to the Menu above")
 
 if __name__ == '__main__':
 
